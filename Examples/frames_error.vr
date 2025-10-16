@@ -1,0 +1,26 @@
+<VirtuallyRetro-File>
+<source>_start:
+
+	jsr test
+	
+	brk
+	
+test:
+
+	jsr test1
+	
+	rts
+	
+test1:
+
+	jsr test
+	
+	rts
+</source>
+<mem>1024</mem>
+<row>1</row>
+<col>0</col>
+<hash></hash>
+<scroll>0</scroll>
+<autorun>false</autorun>
+<fullscreen>false</fullscreen>

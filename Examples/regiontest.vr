@@ -1,0 +1,106 @@
+<VirtuallyRetro-File>
+<source>_start:
+
+	jsr setup
+	
+mainLoop:
+
+	in Key.Code
+	jsrnz keyTest
+	
+	jsr drawText
+	jsr drawLines
+ 
+	jp mainLoop
+	
+keyTest:
+	in Key.Code
+	cmp const_KeyEnd
+	jnz endKeyTest
+	brk
+	
+endKeyTest:
+	in
+	rts
+	
+drawlines:
+	lda #150
+	rnd
+	pds a
+	lda #220
+	rnd
+	pds a
+	lda #150
+	rnd
+	pds a
+	lda #220
+	rnd
+	pds a
+	call const_graphics, const_gLine
+
+	rts
+
+drawtext:
+	lda #5
+	rnd
+	jsrz space
+	jsrnz char
+
+	rts
+
+
+space:
+	lda #32
+	out
+
+	rts
+	
+char:
+	lda #63
+	rnd
+	out color.foreground
+	lda #94
+	rnd
+	add #32
+	out
+
+	rts 
+
+
+setup:
+	lda #0
+	out color.background
+	_cls
+	
+	pds #9
+	pds #9
+	pds #152
+	pds #222
+	call const_graphics, const_gRect		
+
+	pds #169
+	pds #9
+	pds #145
+	pds #217
+	call const_graphics, const_gRect
+
+	pds #170
+	pds #10
+	pds #144
+	pds #216
+	call const_text, const_tSetTextRegion
+
+	pds #10
+	pds #10
+	pds #150
+	pds #220
+	call const_graphics, const_gSetGraphicsRegion
+
+	rts</source>
+<mem>1024</mem>
+<row>96</row>
+<col>0</col>
+<hash></hash>
+<scroll>66</scroll>
+<autorun>false</autorun>
+<fullscreen>false</fullscreen>

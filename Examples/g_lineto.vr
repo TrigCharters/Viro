@@ -1,0 +1,68 @@
+<VirtuallyRetro-File>
+<source>_start:
+	
+	lda #0
+	out color.background
+	_cls
+	
+	
+
+mainLoop:
+
+	in key.Code
+	jsrnz keyTest
+	
+	jsr randomcolor
+	jsr drawLine
+
+	jp mainLoop
+
+;----------------------------------		
+exit:
+	brk
+
+;----------------------------------	
+keyTest:
+	in key.Code
+	cmp #32
+	jsrz clearScreen
+		
+	in ;No paramters clears the last keycode
+	cmp const_keyEnd
+	jz exit
+	
+	rts
+
+;----------------------------------
+drawLine:
+	lda #320
+	rnd
+	pds a
+	lda #240
+	rnd
+	pds a
+		
+	call const_graphics, const_gLineTo
+	
+	rts
+
+;----------------------------------		
+clearScreen:
+	call const_graphics, const_gLineToReset
+	_cls
+	rts
+	
+;----------------------------------		
+randomColor:
+	lda #63
+	rnd
+	out color.foreground
+
+	rts</source>
+<mem>1024</mem>
+<row>33</row>
+<col>0</col>
+<hash></hash>
+<scroll>15</scroll>
+<autorun>false</autorun>
+<fullscreen>false</fullscreen>
