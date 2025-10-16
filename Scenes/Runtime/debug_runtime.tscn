@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://oi21ngjmu8n7"]
+
+[ext_resource type="Script" uid="uid://437jpeqkb2lm" path="res://Scripts/Runtime/debug_runtime.gd" id="1_unmxx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyqak"]
+resource_name = "DebugPane"
+content_margin_right = 10.0
+bg_color = Color(0.14902, 0.223529, 0.929412, 1)
+
+[node name="Debug_Runtime" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_unmxx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GraphicsScreen" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+process_mode = 3
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="debug_pane" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 20)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/read_only = SubResource("StyleBoxFlat_nyqak")
+alignment = 2
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/GraphicsScreen" to="." method="_gui_input"]

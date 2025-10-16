@@ -1,0 +1,424 @@
+[gd_scene load_steps=8 format=3 uid="uid://cly02dkg1unrc"]
+
+[ext_resource type="StyleBox" uid="uid://cx6fkhog11f3g" path="res://Resources/themes/roundedRect.tres" id="1_s0enp"]
+[ext_resource type="Script" uid="uid://dkhiipdoch8xc" path="res://Scripts/Dialogs/options_dialog.gd" id="2_s88ny"]
+[ext_resource type="StyleBox" uid="uid://box0many71a4o" path="res://Resources/themes/dialogTitleBackground.tres" id="3_b1dli"]
+[ext_resource type="SystemFont" uid="uid://djnjdmtaghwta" path="res://Resources/themes/dialogTitle.tres" id="4_n51tg"]
+[ext_resource type="Texture2D" uid="uid://d1fyvq5kerbnb" path="res://Resources/themes/close_gadet.tres" id="5_f673p"]
+[ext_resource type="SystemFont" uid="uid://b3xyn2xlnfoht" path="res://Resources/themes/dialogText.tres" id="6_ciyds"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_3qgsv"]
+
+[node name="options_dialog" type="Panel"]
+process_mode = 3
+custom_minimum_size = Vector2(210, 250)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = -160.0
+offset_right = 137.5
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = ExtResource("1_s0enp")
+script = ExtResource("2_s88ny")
+
+[node name="dialogtitleBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("3_b1dli")
+metadata/_edit_lock_ = true
+
+[node name="dialogTitle" type="Label" parent="dialogtitleBackground"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 3.0
+offset_top = -1.0
+offset_right = -36.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_n51tg")
+text = "Options"
+vertical_alignment = 1
+justification_flags = 0
+metadata/_edit_lock_ = true
+
+[node name="dialogCloseGadget" type="Button" parent="dialogtitleBackground"]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 676.0
+offset_bottom = 408.0
+scale = Vector2(0.035, 0.035)
+focus_mode = 0
+theme_override_icons/icon = ExtResource("5_f673p")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "x
+"
+flat = true
+
+[node name="editor_section_title" type="Label" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 30.0
+offset_right = -150.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 8
+text = "Code Editor"
+justification_flags = 0
+
+[node name="project_section_title" type="Label" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 113.5
+offset_right = -150.0
+offset_bottom = 123.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 8
+text = "Project"
+justification_flags = 0
+
+[node name="project_section_line" type="Line2D" parent="."]
+position = Vector2(-5.30473, 119)
+scale = Vector2(1.02663, 1)
+points = PackedVector2Array(50, 0.5, 217, -0.5)
+width = 1.0
+default_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="runtime_section_title" type="Label" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 149.5
+offset_right = -150.0
+offset_bottom = 159.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 8
+text = "Runtime (Debug Engine)"
+justification_flags = 0
+
+[node name="runtime_section_line" type="Line2D" parent="."]
+position = Vector2(83.2815, 155)
+scale = Vector2(0.677928, 1)
+points = PackedVector2Array(50, 0.5, 270, 0.5)
+width = 1.0
+default_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="system_section_title" type="Label" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 225.5
+offset_right = -150.0
+offset_bottom = 235.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 8
+text = "System"
+justification_flags = 0
+
+[node name="system_section_line" type="Line2D" parent="."]
+position = Vector2(-4, 231)
+points = PackedVector2Array(50, 0.5, 270, 0.5)
+width = 1.0
+default_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="okButton" type="Button" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 130.0
+offset_right = -5.0
+offset_bottom = 153.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_next = NodePath("../cancelButton")
+mouse_force_pass_scroll_events = false
+theme_override_fonts/font = ExtResource("6_ciyds")
+text = "OK"
+
+[node name="auto_save" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 40.0
+offset_right = 103.0
+offset_bottom = 64.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_pressed = true
+text = "Auto Save"
+flat = true
+
+[node name="line_numbers" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 64.0
+offset_right = 110.0
+offset_bottom = 88.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_pressed = true
+text = "Line Numbers"
+flat = true
+
+[node name="line_number_padding" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 64.0
+offset_right = 229.0
+offset_bottom = 88.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_pressed = true
+text = "Number Padding
+"
+flat = true
+
+[node name="line_spacing" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 40.0
+offset_right = 265.0
+offset_bottom = 64.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_pressed = true
+text = "Default Line Spacing
+"
+flat = true
+
+[node name="line_wrapping" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 88.0
+offset_right = 116.0
+offset_bottom = 112.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_pressed = true
+text = "Line Wrapping"
+flat = true
+
+[node name="auto_run" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 124.0
+offset_right = 103.0
+offset_bottom = 148.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+disabled = true
+button_pressed = true
+text = "Auto Run"
+flat = true
+
+[node name="run_fullscreen" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 124.0
+offset_right = 210.0
+offset_bottom = 148.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+disabled = true
+button_pressed = true
+text = "Run Full Screen"
+flat = true
+
+[node name="metrics" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 160.0
+offset_right = 123.0
+offset_bottom = 184.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_pressed = true
+text = "Gather Metrics"
+flat = true
+
+[node name="auto_edit" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 236.0
+offset_right = 103.0
+offset_bottom = 260.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_pressed = true
+text = "Auto Edit"
+flat = true
+
+[node name="auto_load" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 236.0
+offset_right = 210.0
+offset_bottom = 260.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_pressed = true
+text = "Auto Load"
+flat = true
+
+[node name="full_screen" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 260.0
+offset_right = 105.0
+offset_bottom = 284.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_pressed = true
+text = "Full Screen"
+flat = true
+
+[node name="save_prompt" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 260.0
+offset_right = 212.0
+offset_bottom = 284.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_pressed = true
+text = "Save Prompt"
+flat = true
+
+[node name="cancelButton" type="Button" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = 130.0
+offset_right = -93.0
+offset_bottom = 153.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_next = NodePath("../okButton")
+mouse_force_pass_scroll_events = false
+theme_override_fonts/font = ExtResource("6_ciyds")
+text = "Cancel"
+
+[node name="project_locked_status" type="Label" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 220.0
+offset_top = 114.0
+offset_right = -7.0
+offset_bottom = 124.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 8
+text = "(Locked)"
+horizontal_alignment = 1
+justification_flags = 0
+
+[node name="frequency_title" type="Label" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 15.0
+offset_top = 188.0
+offset_right = -128.0
+offset_bottom = 198.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 8
+text = "Debug Pane Update Frequency"
+justification_flags = 0
+
+[node name="frequency_slow" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 199.0
+offset_right = 70.0
+offset_bottom = 223.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_group = SubResource("ButtonGroup_3qgsv")
+text = "Slow"
+flat = true
+
+[node name="frequency_medium" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 199.0
+offset_right = 138.0
+offset_bottom = 223.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_group = SubResource("ButtonGroup_3qgsv")
+text = "Medium"
+flat = true
+
+[node name="frequency_fast" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 199.0
+offset_right = 194.0
+offset_bottom = 223.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_ciyds")
+theme_override_font_sizes/font_size = 10
+button_pressed = true
+button_group = SubResource("ButtonGroup_3qgsv")
+text = "Fast"
+flat = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="dialogtitleBackground/dialogCloseGadget" to="." method="dialog_cancelled"]
+[connection signal="pressed" from="okButton" to="." method="_on_ok_button_pressed"]
+[connection signal="pressed" from="cancelButton" to="." method="dialog_cancelled"]

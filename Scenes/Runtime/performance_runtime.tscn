@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2v555ix1rfpy"]
+
+[ext_resource type="Script" uid="uid://b2qoyvd6aal2r" path="res://Scripts/Runtime/performance_runtime.gd" id="1_ningf"]
+
+[node name="Performance_Runtime" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ningf")
+
+[node name="GraphicsScreen" type="TextureRect" parent="."]
+process_mode = 3
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+focus_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="gui_input" from="GraphicsScreen" to="." method="_gui_input"]

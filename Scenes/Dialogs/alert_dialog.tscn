@@ -1,0 +1,129 @@
+[gd_scene load_steps=7 format=3 uid="uid://dy7q1rgibna3t"]
+
+[ext_resource type="StyleBox" uid="uid://cx6fkhog11f3g" path="res://Resources/themes/roundedRect.tres" id="1_el14c"]
+[ext_resource type="Script" path="res://Scripts/Dialogs/alert_dialog.gd" id="2_wixkh"]
+[ext_resource type="StyleBox" uid="uid://box0many71a4o" path="res://Resources/themes/dialogTitleBackground.tres" id="3_kneck"]
+[ext_resource type="SystemFont" uid="uid://djnjdmtaghwta" path="res://Resources/themes/dialogTitle.tres" id="4_wifv7"]
+[ext_resource type="SystemFont" uid="uid://b3xyn2xlnfoht" path="res://Resources/themes/dialogText.tres" id="5_dhqk5"]
+[ext_resource type="Texture2D" uid="uid://d1fyvq5kerbnb" path="res://Resources/themes/close_gadet.tres" id="6_uiv4l"]
+
+[node name="alert_dialog" type="Panel"]
+process_mode = 3
+custom_minimum_size = Vector2(320, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = ExtResource("1_el14c")
+script = ExtResource("2_wixkh")
+metadata/_edit_lock_ = true
+
+[node name="dialogtitleBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("3_kneck")
+metadata/_edit_lock_ = true
+
+[node name="dialogTitle" type="Label" parent="dialogtitleBackground"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_right = -35.0
+offset_bottom = 17.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_wifv7")
+text = "Warning"
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="dialogText" type="Label" parent="dialogtitleBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = 17.5
+offset_right = 172.0
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_dhqk5")
+theme_override_font_sizes/font_size = 12
+text = "The current project has not been saved. Any changes will be lost."
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="dialogCloseGadget" type="Button" parent="dialogtitleBackground"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 1.0
+offset_right = 708.0
+offset_bottom = 409.0
+scale = Vector2(0.035, 0.035)
+focus_mode = 0
+theme_override_icons/icon = ExtResource("6_uiv4l")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="okButton" type="Button" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 22.0
+offset_right = -5.0
+offset_bottom = 45.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_next = NodePath("../cancelButton")
+mouse_force_pass_scroll_events = false
+theme_override_fonts/font = ExtResource("5_dhqk5")
+text = "OK"
+metadata/_edit_lock_ = true
+
+[node name="cancelButton" type="Button" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = 22.0
+offset_right = -93.0
+offset_bottom = 45.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_next = NodePath("../okButton")
+theme_override_fonts/font = ExtResource("5_dhqk5")
+text = "Cancel"
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="dialogtitleBackground/dialogCloseGadget" to="." method="dialog_cancelled"]
+[connection signal="pressed" from="okButton" to="." method="_on_ok_button_pressed"]
+[connection signal="pressed" from="cancelButton" to="." method="dialog_cancelled"]

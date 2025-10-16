@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpxhnswvqnbo7"]
+
+[ext_resource type="Script" uid="uid://ls5xxrjfddyx" path="res://Scripts/Scenes/MainTerminal.gd" id="1_jhrtd"]
+
+[node name="MainTerminal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/background_color = Color(0.14902, 0.223529, 0.929412, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "%NAME% - Virtually Retro.
+Version %VER% %TYPE% - Built %DATE%
+%MEM% Bytes of configured memory.
+
+Type Help or ? for assistance.
+
+>"
+context_menu_enabled = false
+emoji_menu_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+caret_blink = true
+caret_multiple = false
+script = ExtResource("1_jhrtd")
+
+[connection signal="caret_changed" from="MarginContainer/TextEdit" to="MarginContainer/TextEdit" method="set_caret"]
+[connection signal="focus_entered" from="MarginContainer/TextEdit" to="MarginContainer/TextEdit" method="set_caret"]
+[connection signal="text_set" from="MarginContainer/TextEdit" to="MarginContainer/TextEdit" method="set_caret"]
+[connection signal="tree_exiting" from="MarginContainer/TextEdit" to="MarginContainer/TextEdit" method="_on_tree_exiting"]

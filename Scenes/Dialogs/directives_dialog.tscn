@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2aw57vlqaowo"]
+
+[ext_resource type="StyleBox" uid="uid://cx6fkhog11f3g" path="res://Resources/themes/roundedRect.tres" id="1_gbfu7"]
+[ext_resource type="Script" uid="uid://5aj6535y7vsm" path="res://Scripts/Dialogs/directives_dialog.gd" id="2_pvstj"]
+[ext_resource type="StyleBox" uid="uid://box0many71a4o" path="res://Resources/themes/dialogTitleBackground.tres" id="3_xpxcn"]
+[ext_resource type="SystemFont" uid="uid://djnjdmtaghwta" path="res://Resources/themes/dialogTitle.tres" id="4_hhh10"]
+[ext_resource type="Texture2D" uid="uid://d1fyvq5kerbnb" path="res://Resources/themes/close_gadet.tres" id="5_v1kxp"]
+[ext_resource type="SystemFont" uid="uid://b3xyn2xlnfoht" path="res://Resources/themes/dialogText.tres" id="6_66awx"]
+
+[node name="directives_dialog" type="Panel"]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -117.5
+offset_right = 95.0
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_styles/panel = ExtResource("1_gbfu7")
+script = ExtResource("2_pvstj")
+metadata/_edit_lock_ = true
+
+[node name="dialogtitleBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("3_xpxcn")
+metadata/_edit_lock_ = true
+
+[node name="dialogTitle" type="Label" parent="dialogtitleBackground"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 3.0
+offset_top = -1.0
+offset_right = -36.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_hhh10")
+text = "Compiler Directives"
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="dialogCloseGadget" type="Button" parent="dialogtitleBackground"]
+layout_mode = 0
+offset_left = 181.0
+offset_right = 601.0
+offset_bottom = 408.0
+scale = Vector2(0.035, 0.035)
+focus_mode = 0
+theme_override_icons/icon = ExtResource("5_v1kxp")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "x
+"
+flat = true
+
+[node name="DirectivesList" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -72.5
+offset_right = 95.0
+offset_bottom = 97.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_66awx")
+theme_override_font_sizes/font_size = 12
+allow_search = false
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="dialogtitleBackground/dialogCloseGadget" to="." method="dialog_cancelled"]
+[connection signal="item_clicked" from="DirectivesList" to="." method="_on_directives_list_item_clicked"]

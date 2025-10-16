@@ -1,0 +1,164 @@
+[gd_scene load_steps=7 format=3 uid="uid://l0erepyhgkum"]
+
+[ext_resource type="StyleBox" uid="uid://cx6fkhog11f3g" path="res://Resources/themes/roundedRect.tres" id="1_fjixg"]
+[ext_resource type="Script" path="res://Scripts/Dialogs/font_editor_dialog.gd" id="2_iaw4g"]
+[ext_resource type="StyleBox" uid="uid://box0many71a4o" path="res://Resources/themes/dialogTitleBackground.tres" id="3_7ecil"]
+[ext_resource type="SystemFont" uid="uid://djnjdmtaghwta" path="res://Resources/themes/dialogTitle.tres" id="4_084yo"]
+[ext_resource type="Texture2D" uid="uid://d1fyvq5kerbnb" path="res://Resources/themes/close_gadet.tres" id="5_nq01a"]
+[ext_resource type="SystemFont" uid="uid://b3xyn2xlnfoht" path="res://Resources/themes/dialogText.tres" id="6_wtyul"]
+
+[node name="font_editor_dialog" type="Panel"]
+process_mode = 3
+custom_minimum_size = Vector2(210, 235)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -117.5
+offset_right = 105.0
+offset_bottom = 149.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = ExtResource("1_fjixg")
+script = ExtResource("2_iaw4g")
+
+[node name="dialogtitleBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("3_7ecil")
+metadata/_edit_lock_ = true
+
+[node name="dialogTitle" type="Label" parent="dialogtitleBackground"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 3.0
+offset_top = -1.0
+offset_right = -36.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_084yo")
+text = "Font Editor"
+vertical_alignment = 1
+clip_text = true
+metadata/_edit_lock_ = true
+
+[node name="dialogCloseGadget" type="Button" parent="dialogtitleBackground"]
+layout_mode = 0
+offset_left = 189.0
+offset_right = 609.0
+offset_bottom = 408.0
+scale = Vector2(0.035, 0.035)
+focus_mode = 0
+theme_override_icons/icon = ExtResource("5_nq01a")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "x
+"
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="font_glyph_rect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 30.0
+offset_right = 205.0
+offset_bottom = 230.0
+
+[node name="charDetails" type="Label" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.5
+offset_top = -25.0
+offset_right = -96.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_wtyul")
+theme_override_font_sizes/font_size = 8
+text = "Character Locked"
+vertical_alignment = 1
+justification_flags = 0
+metadata/_edit_lock_ = true
+
+[node name="btnToolTip" type="Label" parent="."]
+visible = false
+clip_contents = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -37.0
+offset_right = -4.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_wtyul")
+theme_override_font_sizes/font_size = 8
+justification_flags = 0
+clip_text = true
+metadata/_edit_lock_ = true
+
+[node name="modeLabel" type="Label" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -18.5
+offset_right = -96.0
+offset_bottom = -3.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_wtyul")
+theme_override_font_sizes/font_size = 8
+text = "MODE: System (Locked)"
+vertical_alignment = 1
+justification_flags = 0
+metadata/_edit_lock_ = true
+
+[node name="actionButton" type="Button" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 106.0
+offset_right = -5.0
+offset_bottom = 129.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+theme_override_fonts/font = ExtResource("6_wtyul")
+disabled = true
+text = "Create"
+metadata/_edit_lock_ = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="dialogtitleBackground/dialogCloseGadget" to="." method="dialog_cancelled"]
+[connection signal="gui_input" from="font_glyph_rect" to="." method="_on_font_glyph_rect_gui_input"]
+[connection signal="focus_entered" from="actionButton" to="." method="_on_action_button_focus_entered"]
+[connection signal="mouse_entered" from="actionButton" to="." method="_on_action_button_mouse_entered"]
+[connection signal="mouse_exited" from="actionButton" to="." method="_on_action_button_mouse_exited"]
+[connection signal="pressed" from="actionButton" to="." method="_on_action_button_pressed"]

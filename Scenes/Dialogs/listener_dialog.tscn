@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7yau2kxswf05"]
+
+[ext_resource type="StyleBox" uid="uid://cx6fkhog11f3g" path="res://Resources/themes/roundedRect.tres" id="1_kssol"]
+[ext_resource type="Script" uid="uid://csgkymgj5l8on" path="res://Scripts/Dialogs/listener_dialog.gd" id="2_b6eqo"]
+[ext_resource type="StyleBox" uid="uid://box0many71a4o" path="res://Resources/themes/dialogTitleBackground.tres" id="3_4l2ly"]
+[ext_resource type="SystemFont" uid="uid://djnjdmtaghwta" path="res://Resources/themes/dialogTitle.tres" id="4_hvecm"]
+[ext_resource type="SystemFont" uid="uid://c8mxmsi5tp5sq" path="res://Resources/themes/lister_select_key.tres" id="5_akqif"]
+[ext_resource type="Texture2D" uid="uid://d1fyvq5kerbnb" path="res://Resources/themes/close_gadet.tres" id="6_1b3fq"]
+
+[node name="listener_dialog" type="Panel"]
+process_mode = 3
+custom_minimum_size = Vector2(200, 50)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 120.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = ExtResource("1_kssol")
+script = ExtResource("2_b6eqo")
+metadata/_edit_lock_ = true
+
+[node name="dialogtitleBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("3_4l2ly")
+metadata/_edit_lock_ = true
+
+[node name="dialogTitle" type="Label" parent="dialogtitleBackground"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_right = -35.0
+offset_bottom = 17.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_hvecm")
+text = "Key Event Listener"
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="timerbackgroundBorder" type="ColorRect" parent="dialogtitleBackground"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 28.0
+offset_right = 210.0
+offset_bottom = 70.0
+color = Color(0.156863, 0.156863, 0.156863, 1)
+metadata/_edit_lock_ = true
+
+[node name="timerbackground" type="ColorRect" parent="dialogtitleBackground"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 29.0
+offset_right = 209.0
+offset_bottom = 69.0
+color = Color(0.235294, 0.235294, 0.235294, 1)
+metadata/_edit_lock_ = true
+
+[node name="timebar" type="ColorRect" parent="dialogtitleBackground"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 30.0
+offset_right = 208.0
+offset_bottom = 68.0
+color = Color(0.235294, 0.235294, 0.784314, 1)
+metadata/_edit_lock_ = true
+
+[node name="dialogText" type="Label" parent="dialogtitleBackground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 2.882
+anchor_right = 0.5
+anchor_bottom = 2.882
+offset_left = -100.0
+offset_top = -18.994
+offset_right = 100.0
+offset_bottom = 19.006
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_akqif")
+theme_override_font_sizes/font_size = 12
+text = "Listening..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="dialogCloseGadget" type="Button" parent="dialogtitleBackground"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 1.0
+offset_right = 607.0
+offset_bottom = 409.0
+scale = Vector2(0.035, 0.035)
+focus_mode = 0
+theme_override_icons/icon = ExtResource("6_1b3fq")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="KeyInsertTimer" type="Timer" parent="."]
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="dialogtitleBackground/dialogCloseGadget" to="." method="dialog_cancelled"]
+[connection signal="timeout" from="KeyInsertTimer" to="." method="_on_key_insert_timer_timeout"]
