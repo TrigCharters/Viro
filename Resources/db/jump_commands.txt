@@ -1,0 +1,11 @@
+jp
+jz
+jnz
+jg
+jl
+jgz
+jlz
+jsr
+lp
+jsrz
+jsrnz

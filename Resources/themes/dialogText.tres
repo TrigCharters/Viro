@@ -1,0 +1,6 @@
+[gd_resource type="SystemFont" format=3 uid="uid://b3xyn2xlnfoht"]
+
+[resource]
+font_names = PackedStringArray("Andale Mono", "Menlo", "Monaco", "Courier New")
+generate_mipmaps = true
+oversampling = 10.0

@@ -1,0 +1,11 @@
+[gd_resource type="SystemFont" format=3 uid="uid://c8mxmsi5tp5sq"]
+
+[resource]
+resource_name = "keyListener"
+font_names = PackedStringArray("Verdana", "Menlo", "Andale Mono")
+font_weight = 700
+generate_mipmaps = true
+force_autohinter = true
+hinting = 2
+multichannel_signed_distance_field = true
+oversampling = 10.0

@@ -1,0 +1,23 @@
+terminal|ls|List saved programs. -AL switch will show all files and extensions in a list. -A and -L can be used individually. 
+terminal|cls|Clear the screen.
+terminal|new|Erase the current program but leave memory size unchanged.
+terminal|del|Delete a file or directory in the current path.
+terminal|free|Displays free memory excluding space used by the compiled program.
+terminal|save|Save the current program to disk.
+terminal|load|Load a program from disk.
+terminal|run|Compile and run the current program if no errors within the performance engine.
+terminal|exit|Exit the program.
+terminal|setmem|Set the amount of configured memory to the next closest multipe of 1024.
+terminal|reset|Reset the system to default.
+terminal|edit|Switch to the code editor. Shortcut (shift+command+e)
+terminal|path|Used to set or display Viro's current working path.
+terminal|compile|Compile the loaded program code displaying any errors.
+terminal|calc|Used to display the result of a maths equation. Can also be use to convert numbers between Hex and Decimal.
+terminal|lock|Used to lock the current project.
+terminal|cd|Move up or down a directory within Viro's home path.  'CD ..' moves up a directory.  'CD' alone will return to the configured home path.
+terminal|md|Creates a subdirectory within the current directory.
+terminal|options|Displays the system options dialog.
+terminal|about|Displays program version information.
+terminal|timezone|Used to set the UTC timezone offset.
+terminal|unlock|Used to unlocked a project and optionally have the password cleard..
+terminal|help|Terminal commands: about, calc, cd, cls, compile, del, edit, exit, free, load, lock, ls, md, new, options, path, reset, run, save, setmem, timezone or unlock.  For extra help type <command> ?
